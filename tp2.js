@@ -45,6 +45,27 @@ app.post('/adresse', (req, res) => {
     })
 })
 
+app.get('/ajout',  (req, res, next) => {
+  var cursor = db.collection('adresse').find().toArray(function(err, resultat){
+      if(err) return next(err);
+      db.collection('adresse').insertOne({
+      "nom" : "Nom",
+      "prenom" : "Prenom",
+      "telephone": "000-000-0000"
+      })
+    })
+    res.redirect('/');
+});
+
+app.get('/detruire',  (req, res, next) => {
+  var cursor = db.collection('adresse').find().toArray(function(err, resultat){
+      if(err) return next(err);
+      db.collection('adresse').deleteMany()
+    })
+    res.redirect('/');
+});
+
+/*
 
 app.get('/detruire/:_id', (req, res) => {
 
@@ -61,6 +82,8 @@ app.get('/detruire/:_id', (req, res) => {
         })
     })
 })
+
+*/
 
 app.get('/modifier', (req, res) => {
 
