@@ -1,0 +1,23 @@
+{
+   "user1" : {
+      "nom" : "Martiné",
+	  "motpasse" : "motpasse1",
+	  "profession" : "Professeur",
+	  "id": 1
+   },
+   "user2" : {
+      "nom" : "Latulippe",
+	  "motpasse" : "motpasse2",
+	  "profession" : "Programmeur",
+	  "id": 2
+   },
+   "user3" : {
+      "nom" : "Fortin",
+	  "motpasse" : "motpasse3",
+	  "profession" : "Directeur",
+	  "id": 3
+   }
+}
+{"nom":"Sestier","motpass":"motpasse4","profession":"Ingénieur","id":4},
+
+{"nom":"Remus Lupin","motpass":"loupgarou","profession":"Professeur de Défence contre les forces du mal","id":5}{"nom":"Remus Lupin","motpass":"loupgarou","profession":"Professeur de Défence contre les forces du mal","id":5}

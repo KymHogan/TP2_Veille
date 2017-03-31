@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Kym Hogan - TP2 veille</title>
+    <link rel="stylesheet" type="text/css" href="css/style_tp2.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <script src="https://use.fontawesome.com/554fe70f22.js"></script>
+  </head>
+  <body>
+    <h1 id="titre">Kym Hogan - TP2 veille</h1>
+    <div class="container-fluid" style="margin-top: 10px">
+      <div class="table-row header">
+        <div class="text">Nom</div>
+        <div class="text">Prénom</div>
+        <div class="text">Téléphone</div>
+        <div class="text">_id</div>
+        <div class="num"></div>
+        <i class="num fa fa-plus" aria-hidden="true"></i>
+      </div>
+      <% for(var i=0; i<adresse.length; i++) {%>
+      <div class="table-row">
+        <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].nom %></div>
+        <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].prenom %></div>
+        <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].telephone %></div>
+        <div class="text" value=""><%= adresse[i]._id %></div>
+        <i class="num fa fa-floppy-o" aria-hidden="true"></i>
+        <i class="num fa fa-trash-o" aria-hidden="true"></i>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>

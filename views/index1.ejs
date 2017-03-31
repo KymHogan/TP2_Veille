@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Carnet d'Adresse des amis de Poudlard</title>
+</head>
+<body>
+  <ul class="adresse">
+    <li class="client">
+      <form action="/enregistrer" method="POST">
+        <input type="text" name="nom" value="<%= adresse[id].nom %>">
+        <input type="text" name="prenom" value="<%= adresse[id].prenom %>">
+        <input type="text" name="telephone" value="<%= adresse[id].telephone %>">
+        <input type="text" name="ville" value="<%= adresse[id].ville %>">
+        <input type="text" name="codepostal" value="<%= adresse[id].codepostal %>">
+        <input type="hidden" name="_id" value="<%= adresse[id]._id %>">
+        <button type="submit">Enregistrer</buttom>
+      </form>   
+    </li>
+  </ul>
+  
+  <script type="text/javascript" src="modifier_adresse.js"></script>
+
+</body>
+</html>

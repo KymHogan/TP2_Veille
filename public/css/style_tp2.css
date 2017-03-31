@@ -1,0 +1,60 @@
+/*
+ * Define the widths: play around with these to get a best fit.
+ */
+::selection {
+  background: #b0dacc;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#titre {
+  margin-left: 1.2%;
+  text-transform: uppercase;
+  color: #f2f2f2;
+}
+.table-row {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.text {
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+}
+.text {
+  width: 300px;
+}
+.num {
+  width: 80px;
+}
+/*
+ * General good-look styles, not mandatory.
+ */
+body {
+  font-size: 20px;
+}
+.table-row {
+  border-bottom: 2px solid #fbfbfb;
+  border-collapse: collapse;
+  padding-top: 5px;
+}
+.table-row.header {
+  background-color: #b0dacc;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
