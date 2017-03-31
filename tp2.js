@@ -36,64 +36,45 @@ app.get('/', (req, res) => {
     })
 })
 
-// va chercher le form de la collection adresse et enregistre le contenu de la bdd qui redirrige a l'affichage
-app.post('/adresse', (req, res) => {
-    db.collection('adresse').save(req.body, (err, result) => {
-        if (err) return console.log(err)
-        console.log('sauvegarder dans la BD')
-        res.redirect('/')
-    })
-})
+var classementNom = 1;
+app.get('/classer',  (req, res, next) => {
 
-app.get('/ajout',  (req, res, next) => {
-  var cursor = db.collection('adresse').find().toArray(function(err, resultat){
-      if(err) return next(err);
-      db.collection('adresse').insertOne({
-      "nom" : "Nom",
-      "prenom" : "Prenom",
-      "telephone": "000-000-0000"
-      })
+  var cursor = db.collection('adresse').find().sort({nom:classementNom}).toArray(function(err, resultat) {
+        if (err) return console.log(err)
+        res.render('index_tp2.ejs', {
+            adresse: resultat
+        })
+        classementNom = -classementNom;
     })
-    res.redirect('/');
 });
 
-app.get('/detruire/:_id', (req, res) => {
+app.post('/ajouter',  (req, res, next) => {
 
-    db.collection('adresse').findOneAndDelete({
-        _id: ObjectId(req.params._id)
-    }, (err, resultat) => {
+  console.log(req.body);
+
+  db.collection('adresse').insertOne({
+    "nom" : req.body.ajouter.nom,
+    "prenom" : req.body.ajouter.prenom,
+    "telephone": req.body.ajouter.telephone 
+  }, (err, resultat) => {
 
         if (err) return res.send(500, err)
         var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
             if (err) return console.log(err)
-            // renders index.ejs
-            // affiche le contenu de la BD
-            res.redirect('/');
+            console.log("err");
         })
     })
-})
+});
 
-app.get('/modifier', (req, res) => {
+app.post('/modifier',  (req, res, next) => {
 
-    //var nom = document.getElementById("nom").value;
-
-    var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
-        if (err) return console.log(err)
-        console.log(req.url.slice(-1));
-        res.redirect('/');
-        //res.render('index1.ejs', {adresse: resultat, id:req.url.slice(-1)})
-    })
-})
-
-app.get('/enregistrer', (req, res) => {
-
-    db.collection('adresse').update({
+  db.collection('adresse').update({
         _id: ObjectId(req.body._id)
     }, {
         $set: {
-            'nom': req.body.nom,
-            'prenom': req.body.prenom,
-            'telephone': req.body.telephone,
+            "nom": req.body.modifier.nom, 
+            "prenom": req.body.modifier.prenom, 
+            "telephone": req.body.modifier.telephone
         }
     }, (err, resultat) => {
 
@@ -101,7 +82,15 @@ app.get('/enregistrer', (req, res) => {
         var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
             if (err) return console.log(err)
             console.log("err");
-        res.redirect('/');
         })
+    })
+});
+
+app.post('/detruire/:_id', (req, res) => {
+
+    db.collection('adresse').findOneAndDelete({
+        _id: ObjectId(req.params._id)
+    }, (err, resultat) => {
+        res.redirect('/');
     })
 })
