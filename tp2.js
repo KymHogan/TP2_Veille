@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('public')) // pour utiliser le dossier public
 var db;
 
+//Connection à la base de données
 MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) => {
     if (err) return console.log(err)
     db = database
@@ -19,8 +20,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
     })
 })
 
+//Lorsque l'url est vide`, on affiche le contenu de la base de données
 app.get('/', (req, res) => {
-    console.log('la route route get / = ' + req.url)
     var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
         if (err) return console.log(err)
         res.render('index_tp2.ejs', {
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
     })
 })
 
+//Lorsqu'on clique sur le nom, on classe les éléments selon un ordre ascendant ou descendant
 var classementNom = 1;
 app.get('/classer',  (req, res, next) => {
   var cursor = db.collection('adresse').find().sort({nom:classementNom}).toArray(function(err, resultat) {
@@ -40,6 +42,7 @@ app.get('/classer',  (req, res, next) => {
     })
 });
 
+//Appelé du script client.js - Ajoute un élément à la collection avec l'information envoyée (innerHTML)
 app.post('/ajouter',  (req, res, next) => {
   console.log(req.body);
   db.collection('adresse').insertOne({
@@ -55,6 +58,7 @@ app.post('/ajouter',  (req, res, next) => {
     })
 });
 
+//Appelé du script client.js - Modifie un élément à la collection avec l'information envoyée (innerHTML)
 app.post('/modifier',  (req, res, next) => {
   db.collection('adresse').update({
         _id: ObjectId(req.body._id)
@@ -73,6 +77,7 @@ app.post('/modifier',  (req, res, next) => {
     })
 });
 
+//Appelé du script client.js - Détruit un éléments à la collection en fonction de son id
 app.post('/detruire/:_id', (req, res) => {
     db.collection('adresse').findOneAndDelete({
         _id: ObjectId(req.params._id)

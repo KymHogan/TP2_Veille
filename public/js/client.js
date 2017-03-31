@@ -80,6 +80,7 @@ function detruire(element) {
     xhr.addEventListener("readystatechange", traiterRequest, false);
 }
 
+//Permet le ajax et donc de ne pas réafficher la page en entier
 function traiterRequest(e) {
 
     console.log("xhr.readyState = " + xhr.readyState)
