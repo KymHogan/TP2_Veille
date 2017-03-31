@@ -57,16 +57,6 @@ app.get('/ajout',  (req, res, next) => {
     res.redirect('/');
 });
 
-app.get('/detruire',  (req, res, next) => {
-  var cursor = db.collection('adresse').find().toArray(function(err, resultat){
-      if(err) return next(err);
-      db.collection('adresse').deleteMany()
-    })
-    res.redirect('/');
-});
-
-/*
-
 app.get('/detruire/:_id', (req, res) => {
 
     db.collection('adresse').findOneAndDelete({
@@ -83,23 +73,19 @@ app.get('/detruire/:_id', (req, res) => {
     })
 })
 
-*/
-
 app.get('/modifier', (req, res) => {
 
     //var nom = document.getElementById("nom").value;
 
     var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
         if (err) return console.log(err)
-        // renders index.ejs
-        // affiche le contenu de la BD
         console.log(req.url.slice(-1));
         res.redirect('/');
         //res.render('index1.ejs', {adresse: resultat, id:req.url.slice(-1)})
     })
 })
 
-app.post('/enregistrer', (req, res) => {
+app.get('/enregistrer', (req, res) => {
 
     db.collection('adresse').update({
         _id: ObjectId(req.body._id)
@@ -108,18 +94,14 @@ app.post('/enregistrer', (req, res) => {
             'nom': req.body.nom,
             'prenom': req.body.prenom,
             'telephone': req.body.telephone,
-            'ville': req.body.ville,
-            'codepostal': req.body.codepostal
         }
     }, (err, resultat) => {
 
         if (err) return res.send(500, err)
         var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
             if (err) return console.log(err)
-            // renders index.ejs
-            // affiche le contenu de la BD
-            //res.render('index.ejs', {adresse: resultat})
-            res.redirect('/');
+            console.log("err");
+        res.redirect('/');
         })
     })
 })

@@ -24,8 +24,8 @@
         <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].prenom %></div>
         <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].telephone %></div>
         <div class="text" value=""><%= adresse[i]._id %></div>
-        <a href="/"><i class="num fa fa-floppy-o" aria-hidden="true"></i></a>
-        <a href="/detruire"><i class="num fa fa-trash-o" aria-hidden="true"></i></a>
+        <a href="/enregistrer"><i class="num fa fa-floppy-o" aria-hidden="true"></i></a>
+        <a href="/detruire/<%= adresse[i]._id %>"><i class="num fa fa-trash-o" aria-hidden="true"></i></a>
       </div>
       <% } %>
     </div>
