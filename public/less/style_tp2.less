@@ -1,26 +1,22 @@
 @text-width: 300px;
 @num-width: 80px;
-@lacouleurprefereedekathleen: #B0DACC;
-@lafontprefereeakym:'Roboto Condensed', sans-serif;
+@couleurPrincipale: #F1654C;
+@policePrincipale:'Roboto Condensed', sans-serif;
 
 ::selection {
-  background: @lacouleurprefereedekathleen;
+  background: @couleurPrincipale;
 }
 
 *{
   margin: 0;
   padding: 0;
-  font-family: @lafontprefereeakym;
-}
-
-a{
-  color: black;
+  font-family: @policePrincipale;
 }
 
 #titre{
-  margin-left: 1.2%;
+  margin-left: 1%;
   text-transform: uppercase;
-  color: #f2f2f2;
+  color: @couleurPrincipale;
 }
 
 .table-row {
@@ -49,9 +45,6 @@ a{
   width: @num-width;
 }
 
-/*
- * General good-look styles, not mandatory.
- */
 body {
   font-size: 20px;
 }
@@ -62,9 +55,10 @@ body {
   padding-top: 5px;
 }
 
-.table-row.header {
-  background-color: @lacouleurprefereedekathleen;
+.table-row.header, a{
+  background-color: @couleurPrincipale;
   font-weight: bold;
   padding-top: 8px;
   padding-bottom: 8px;
+  color: white;
 }

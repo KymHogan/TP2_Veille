@@ -1,18 +1,15 @@
 ::selection {
-  background: #b0dacc;
+  background: #f1654c;
 }
 * {
   margin: 0;
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
-a {
-  color: black;
-}
 #titre {
-  margin-left: 1.2%;
+  margin-left: 1%;
   text-transform: uppercase;
-  color: #f2f2f2;
+  color: #f1654c;
 }
 .table-row {
   display: flex;
@@ -41,9 +38,6 @@ a {
 .num {
   width: 80px;
 }
-/*
- * General good-look styles, not mandatory.
- */
 body {
   font-size: 20px;
 }
@@ -52,9 +46,11 @@ body {
   border-collapse: collapse;
   padding-top: 5px;
 }
-.table-row.header {
-  background-color: #b0dacc;
+.table-row.header,
+a {
+  background-color: #f1654c;
   font-weight: bold;
   padding-top: 8px;
   padding-bottom: 8px;
+  color: white;
 }
