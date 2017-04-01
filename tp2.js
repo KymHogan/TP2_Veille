@@ -24,7 +24,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
 app.get('/', (req, res) => {
     var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
         if (err) return console.log(err)
-        res.render('index_tp2.ejs', {
+        res.render('index.ejs', {
             adresse: resultat
         })
     })
@@ -35,7 +35,7 @@ var classementNom = 1;
 app.get('/classer',  (req, res, next) => {
   var cursor = db.collection('adresse').find().sort({nom:classementNom}).toArray(function(err, resultat) {
         if (err) return console.log(err)
-        res.render('index_tp2.ejs', {
+        res.render('index.ejs', {
             adresse: resultat
         })
         classementNom = -classementNom;

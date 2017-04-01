@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Carnet d'Adresse des amis de Poudlard</title>
-</head>
-<body>
-  <button id='update'>Mise à jour du accio</button>
-  <form action="/adresse" method="POST">
-      <input type="text" placeholder="nom" name="nom">
-      <input type="text" placeholder="prenom" name="prenom">
-      <input type="text" placeholder="telephone" name="telephone">
-      <input type="text" placeholder="ville" name="ville">
-      <input type="text" placeholder="code postal" name="codepostal">
-      <button type="submit">Accio</button>
-  </form>
+  <head>
+    <meta charset="UTF-8">
+    <title>Kym Hogan - TP2 veille</title>
+    <link rel="stylesheet" type="text/css" href="css/style_tp2.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <script src="https://use.fontawesome.com/554fe70f22.js"></script>
+    <script src='js/client.js'></script>
+  </head>
+  <body>
+    <h1 id="titre">Kym Hogan - TP2 veille</h1>
+    <div id="tableau" class="container-fluid" style="margin-top: 10px">
+      <div class="table-row header">
+        <div class="text"><a href="/classer">Nom</a></div>
+        <div class="text">Prénom</div>
+        <div class="text">Téléphone</div>
+        <div class="text">_id</div>
+        <div class="num"></div>
+        <i class="num fa fa-plus" aria-hidden="true" onclick="ajout()"></i>
+      </div>
+      <% for(var i=0; i<adresse.length; i++) {%>
+      <div class="table-row">
+        <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].nom %></div>
+        <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].prenom %></div>
+        <div class="text modifiable" value="" contentEditable="true"><%= adresse[i].telephone %></div>
+        <div class="text" value=""><%= adresse[i]._id %></div>
+        <i class="num fa fa-floppy-o" aria-hidden="true" onclick="verifierEnregistrement(this)"></i>
+        <i class="num fa fa-trash-o" aria-hidden="true" onclick="detruire(this)"></i>
 
-  <ul class="adresse">
-  <% for(var i=0; i<adresse.length; i++) {%>
-    <li class="client">
-      <span><%= adresse[i].nom %></span>
-      <span><%= adresse[i].prenom %></span>
-      <span><%= adresse[i].telephone %></span>
-      <span><%= adresse[i].ville %></span>
-      <span><%= adresse[i].codepostal %></span>
-      <form action="/modifier" method="GET"><input type="hidden" name="i" value="<%= i %>"><button type="submit">Modifier</button></form> 
-    </li>
-    <a href="detruire/<%= adresse[i]._id %>">détruire</a>
-
-  <% } %>
-  </ul>
-  
-  <script type="text/javascript" src="modifier_adresse.js"></script>
-
-</body>
+      </div>
+      <% } %>
+    </div>
+  </body>
 </html>
